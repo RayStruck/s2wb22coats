@@ -3,4 +3,8 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  
+  - var image_names = ["house1.webp","house2.jpg","house3.jpg","house4.jpg","house5.jpg"]
+  - for(let i = 0;i<3;i++){
+    - var numbah= Math.floor(Math.random()*5)
+    img(src="images/"+image_names[numbah] alt=image_names[numbah] height=300 width=300)
+  - }

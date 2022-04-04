@@ -3,9 +3,15 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  - var results = ["Model A",1000,["Dish Washer","Refridgerator"]]
+  - var results = [["Model A",1000,["Dish Washer","Refridgerator"]],["Model B",800,["Washer","Dryer","Refridgerator"]]]
   div(class='container-fluid') 
-    div(class='row')
-       each item in results
-        div(class='col-sm-2') #{item}
+    - for(let i = 0; i<results.length;i++){
+      div(class='row' onclick=`buy(${i})`)
+        each item in results[i] 
+          div(class='col-sm-2') #{item}
+    - }
+  script.
+    function buy(i){
+      alert(`You have selected item ${i}`)
+    }
   
