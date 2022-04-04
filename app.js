@@ -7,7 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var housesRouter = require('./routes/houses');
 var usersRouter = require('./routes/users');
-
+var addmodsRouter = require('./routes/addmods')
 var app = express();
 
 // view engine setup
@@ -20,9 +20,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/index', indexRouter);
-app.use('/', housesRouter);
+app.use('/', indexRouter);
+app.use('/houses', housesRouter);
 app.use('/users', usersRouter);
+app.use('/addmods', addmodsRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
