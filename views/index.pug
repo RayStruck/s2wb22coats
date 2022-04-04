@@ -3,3 +3,13 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  p Yurr
+  button(type='button', class='btn btn-secondary', onclick='moreClaps()') Left
+  div(id='target') Clap For Me
+  script(type='text/javascript').
+    var clap_count = 0
+    function moreClaps(){
+      clap_count += 1
+      var target = document.getElementById('target')
+      target.innerHTML = "Clap " + clap_count + " times"
+      }
