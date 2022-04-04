@@ -3,3 +3,21 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  p Cols: #{query.col} Rows: #{query.rows}
+  - var rows = Number(query.rows)
+  - var cols = Number(query.cols)
+  if !Number.isInteger(rows) && !Number.isInteger(cols)
+    p Error: #{rows} or #{cols} is not an integer.
+  if rows > 10 || rows < 0
+    p Error: #{rows} rows is out of range.
+  else if cols > 10 || cols < 0
+    p Error: #{cols} columns is out of range.
+  else 
+    table#outer
+      - for(let i = 0; i<cols;i++){
+        tr#middle
+          - for(let j = 0; j<rows;j++){
+            td= j+(i*i)
+          - }
+      - }
+  
